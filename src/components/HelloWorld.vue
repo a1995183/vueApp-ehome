@@ -1,0 +1,190 @@
+<template>
+ <div class="home">
+    <div class="home-Header">
+     <img class="home-header-img" src="../img/home/logo.png">
+       <a href="#">登录</a>
+    </div>
+    <div class="home-swiper">
+      <swiper :options="swiperOption">
+        <swiper-slide><img class="swiper-item" :src="dataswiper[0].imgUrl" :value="dataswiper[0].id"  @click="gostudy(2656)"></swiper-slide>
+        <swiper-slide><img class="swiper-item" :src="dataswiper[1].imgUrl" :value="dataswiper[1].id"  @click="gostudy(2681)"></swiper-slide>
+        <swiper-slide><img class="swiper-item" :src="dataswiper[2].imgUrl" :value="dataswiper[2].id"  @click="gostudy(2592)"></swiper-slide>
+        <swiper-slide><img class="swiper-item" :src="dataswiper[3].imgUrl" :value="dataswiper[3].id"  @click="gostudy(2679)"></swiper-slide>
+    </swiper>
+<div class="swiper-pagination"></div>
+    </div>
+   <div class="center-menu">
+     <router-link to="/newseye" class="menu-item">
+       <img class="icon-img" src="../img/home/icon_01.png">
+       <p class="icon-text">信工新闻眼</p>
+     </router-link>
+     <router-link to="/newseye" class="menu-item">
+       <img class="icon-img" src="../img/home/icon_02.png">
+       <p class="icon-text">掌上组织生活</p>
+     </router-link>
+     <router-link to="/newseye" class="menu-item">
+       <img class="icon-img" src="../img/home/icon_03.png">
+       <p class="icon-text">党员云互动</p>
+     </router-link>
+   <div style="height:110px"></div>
+     <router-link to="/newseye" class="menu-item">
+       <img class="icon-img" src="../img/home/icon_04.png">
+       <p class="icon-text">党建一点通</p>
+     </router-link>
+     <router-link to="/newseye" class="menu-item">
+       <img class="icon-img" src="../img/home/icon_05.png">
+       <p class="icon-text">党员亮身份</p>
+     </router-link>
+     <router-link to="/newseye" class="menu-item clearflow">
+       <img class="icon-img" src="../img/home/icon_06.png">
+       <p class="icon-text">党史上的今天</p>
+     </router-link>
+   </div>
+   <div class="img-banner">
+     <img class="img-1" src="../img/home/banner01.png">
+     <a  href="#"><img class="img-2" src="../img/home/专栏.png"></a>
+   </div>
+   <div class="table"></div>
+  </div>
+</template>
+<script>
+import 'swiper/dist/css/swiper.css'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import axios from 'axios';
+export default {
+   components: {
+                    swiper,
+                    swiperSlide
+            },
+  name: 'HelloWorld',
+  data () {
+    return {
+  dataswiper:[],
+        swiperOption:{
+                //显示分页
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable:true
+                },
+                //切换模式  横屏或者竖屏
+                // direction : 'vertical',
+                //设置自动播放速度
+                autoplay: {
+                    disableOnInteraction: false,
+                    delay:4000
+                },
+                //开启无限循环
+                loop:true,
+                //设置点击箭头
+                paginationClickable :true,
+                prevButton:'.swiper-button-prev',
+                nextButton:'.swiper-button-next',
+                //设置同屏显示的数量，默认为1，使用auto是随意的意思。
+                slidesPerView:1,
+                //开启鼠标滚轮控制Swiper切换。可设置鼠标选项，或true使用默认值。
+                mousewheel:true ,
+                //默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
+                // freeMode:true
+            }
+        }
+    },methods:{
+      getSwiper(){
+        axios.get('http://211.67.177.56:8080/hhdj/carousel/carouselList.do?type=0').then(
+          res=>{
+            if(res.data.code==1){
+              this.dataswiper=res.data.rows
+            console.log(res)
+                    }else{
+                    }
+          }
+        )
+      },gostudy(value){
+        this.$router.push(`/mystudy/${value}`)
+      }
+    },
+      created(){
+        this.getSwiper()
+      }
+}
+</script>
+<style lang="scss" scoped>
+.clearflow:after{
+  display:block;
+  clear:both;
+  content:"";
+  visibility:
+  hidden;
+  height:0
+}
+
+.home-Header{
+        box-sizing: border-box;
+        padding:5px;
+         width: 100%;
+         height:44px;
+        background:#c50206;
+        font-size: 50px;
+        .home-header-img{
+            width:130px;
+            float:left;
+            }
+        a{
+            float:right;
+            color:#fff;
+            font-size:17px;
+            line-height: 34px;
+            margin-left: 5px;
+            text-decoration: none;
+        }
+    }
+    
+    .home-swiper{
+        /deep/.swiper-container{
+        width:100%;
+      }
+      .swiper-item{
+        width:100%;
+        height:80%;
+        position: relative;
+      }
+      .swiper-pagination{
+        top:172px;
+        left:50%;
+        transform: translateX(-50%)
+      }
+      /deep/ .swiper-pagination-bullet{
+          margin-left:5px;
+        }
+    
+    }
+    .center-menu{
+      .menu-item{
+        width:33%;
+        height:1.88rem;
+        float: left;
+          text-align: center;
+        .icon-img{
+          width:50px;
+          height:50px;
+        }
+        .icon-text{
+          width: 100%;
+          height: 0.25rem;
+          color:#666;
+          font-size: 0.25rem;
+        }
+      }
+    }
+    .img-banner{
+      margin-top:110px;
+     .img-1{
+        width:100%;
+     }
+     .img-2{
+       margin-top:-15px;
+       width:100%;
+     }
+    }
+</style>
+
+
