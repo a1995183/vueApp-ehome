@@ -11,38 +11,49 @@
         <swiper-slide><img class="swiper-item" :src="dataswiper[2].imgUrl" :value="dataswiper[2].id"  @click="gostudy(2592)"></swiper-slide>
         <swiper-slide><img class="swiper-item" :src="dataswiper[3].imgUrl" :value="dataswiper[3].id"  @click="gostudy(2679)"></swiper-slide>
     </swiper>
-<div class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div>
     </div>
    <div class="center-menu">
      <router-link to="/newseye" class="menu-item">
        <img class="icon-img" src="../img/home/icon_01.png">
        <p class="icon-text">信工新闻眼</p>
      </router-link>
-     <router-link to="/newseye" class="menu-item">
+     <router-link to="/life" class="menu-item">
        <img class="icon-img" src="../img/home/icon_02.png">
        <p class="icon-text">掌上组织生活</p>
      </router-link>
-     <router-link to="/newseye" class="menu-item">
+     <router-link to="" class="menu-item">
        <img class="icon-img" src="../img/home/icon_03.png">
        <p class="icon-text">党员云互动</p>
      </router-link>
    <div style="height:110px"></div>
-     <router-link to="/newseye" class="menu-item">
+     <router-link to="/parthbuild" class="menu-item">
        <img class="icon-img" src="../img/home/icon_04.png">
        <p class="icon-text">党建一点通</p>
      </router-link>
-     <router-link to="/newseye" class="menu-item">
+     <router-link to="/showidentify" class="menu-item">
        <img class="icon-img" src="../img/home/icon_05.png">
        <p class="icon-text">党员亮身份</p>
      </router-link>
-     <router-link to="/newseye" class="menu-item clearflow">
+     <router-link to="/today" class="menu-item clearflow">
        <img class="icon-img" src="../img/home/icon_06.png">
        <p class="icon-text">党史上的今天</p>
      </router-link>
    </div>
    <div class="img-banner">
      <img class="img-1" src="../img/home/banner01.png">
-     <a  href="#"><img class="img-2" src="../img/home/专栏.png"></a>
+     <div class="img-2">
+       <div class="img-link"></div>
+       <div class="img-link1">
+        <router-link class="img-link-item" to=""></router-link>
+        <router-link to=""></router-link>
+       </div>
+       <div class="img-link1">
+        <router-link to=""></router-link>
+        <router-link to=""></router-link>
+       </div>
+       <img src="../img/home/专栏.png" alt="">
+     </div>
    </div>
    <div class="table"></div>
   </div>
@@ -93,7 +104,6 @@ export default {
           res=>{
             if(res.data.code==1){
               this.dataswiper=res.data.rows
-            console.log(res)
                     }else{
                     }
           }
@@ -177,13 +187,44 @@ export default {
     }
     .img-banner{
       margin-top:110px;
+      margin-bottom: 36px;
      .img-1{
         width:100%;
      }
      .img-2{
+       height: 3.17307rem;
        margin-top:-15px;
        width:100%;
+       position: relative;
+       img{
+         position: absolute;
+         z-index: -111;
+          width: 100%;
+          top:0;
+          left: 0;
+          right:0;
+          height: 100%;
+       }
+      .img-link{
+        z-index: 0;
+        Width:2.403846rem;
+        height: 3.173077rem;
+        float: left;
+      }
+       .img-link1{
+        z-index: 0;
+        Width:1.2rem;
+        height: 3.173077rem;
+        float: left;
+        .img-link-item{
+          width: 100%;
+          display: block;
+          height: 50%;
+        }
+      }
+
      }
+     
     }
 </style>
 

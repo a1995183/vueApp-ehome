@@ -54,7 +54,43 @@ export default new Router({
         title:'登录页'
       },
       component:()=>import('@/views/login')
-    }
+    },
+    {
+      path:'/life',
+      meta:{
+        title:'掌上组织生活'
+      },
+      component:()=>import('@/views/life')
+    },
+    {
+      path:'/choice',
+      meta:{
+        title:'思想总结'
+      },
+      component:()=>import('@/views/choice')
+    },
+    {
+      path:'/parthbuild',
+      meta:{
+        title:'党建一点通',
+      },
+      component:()=>import('@/views/partybuild')
+    },
+    {
+      path:'/showidentify',
+      meta:{
+        title:'党员亮身份'
+      },
+      component:()=>import('@/views/showidentify')
+    },
+    {
+      path:'/today',
+      meta:{
+        title:'党史上的今天'
+      },
+      component:()=>import('@/views/today')
+    },
+    
    
   ]
 })
