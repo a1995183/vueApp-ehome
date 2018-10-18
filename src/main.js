@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import vant from 'vant'
 import 'vant/lib/vant-css/index.css'
+import xhr from './utils/index'
 Vue.config.productionTip = false
 Vue.use(vant)
+Vue.prototype.xhr=xhr
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -14,3 +16,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+

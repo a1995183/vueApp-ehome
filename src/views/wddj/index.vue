@@ -75,7 +75,8 @@ export default {
         width: 100%;
         height: 54px;
         line-height: 54px;
-        margin:10px;
+        padding:10px;
+        box-sizing: border-box;
         img{
             float: left;
             width: 32px;

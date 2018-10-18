@@ -1,6 +1,6 @@
 <template>
    <div class="header-top">
-            <router-link class="link" to="/home"><img src="../img/gostudy/返回 (1).svg" alt=""></router-link>
+            <i class="link"   @click="go"><img src="../img/gostudy/返回 (1).svg" alt=""></i>
             <p>{{title}}</p>
         </div>
 </template>
@@ -20,6 +20,9 @@ export default {
   components: {
   },
   methods: {
+    go(){
+      history.go(-1)
+    }
   }
 }
 </script>

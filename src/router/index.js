@@ -90,6 +90,41 @@ export default new Router({
       },
       component:()=>import('@/views/today')
     },
+    {
+      path:'/anywhere',
+      meta:{
+        title:'随时随地学'
+      },
+      component:()=>import('@/views/anywhere')
+    },
+    {
+      path:'/anywherephoto',
+      meta:{
+        title:'随时随地拍'
+      },
+      component:()=>import('@/views/anywherephoto')
+    },
+    {
+      path:'/system',
+      meta:{
+        title:'制度建设'
+      },
+      component:()=>import('@/views/system')
+    },
+    {
+      path:'/activity',
+      meta:{
+        title:'特色活动'
+      },
+      component:()=>import('@/views/activity')
+    },
+    {
+      path:'/Interaction',
+      meta:{
+        title:'党员云互动'
+      },
+      component:()=>import('@/views/Interaction')
+    },
     
    
   ]

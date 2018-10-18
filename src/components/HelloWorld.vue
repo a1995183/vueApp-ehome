@@ -22,7 +22,7 @@
        <img class="icon-img" src="../img/home/icon_02.png">
        <p class="icon-text">掌上组织生活</p>
      </router-link>
-     <router-link to="" class="menu-item">
+     <router-link to="/Interaction" class="menu-item">
        <img class="icon-img" src="../img/home/icon_03.png">
        <p class="icon-text">党员云互动</p>
      </router-link>
@@ -45,12 +45,12 @@
      <div class="img-2">
        <div class="img-link"></div>
        <div class="img-link1">
-        <router-link class="img-link-item" to=""></router-link>
-        <router-link to=""></router-link>
+        <router-link class="img-link-item" to="/anywhere"></router-link>
+        <router-link class="img-link-item" to="/system"></router-link>
        </div>
        <div class="img-link1">
-        <router-link to=""></router-link>
-        <router-link to=""></router-link>
+        <router-link class="img-link-item" to="/anywherephoto"></router-link>
+        <router-link class="img-link-item" to="/activity"></router-link>
        </div>
        <img src="../img/home/专栏.png" alt="">
      </div>
@@ -213,7 +213,7 @@ export default {
       }
        .img-link1{
         z-index: 0;
-        Width:1.2rem;
+        Width:2.3846rem;
         height: 3.173077rem;
         float: left;
         .img-link-item{
