@@ -125,6 +125,13 @@ export default new Router({
       },
       component:()=>import('@/views/Interaction')
     },
+    {
+      path:'/user',
+      meta:{
+        title:'修改个人信息'
+      },
+      component:()=>import('@/views/user')
+    },
     
    
   ]

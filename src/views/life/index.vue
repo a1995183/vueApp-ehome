@@ -8,7 +8,7 @@
             <img src="../../img/life/timg.jpg" alt="">
         </div>
         <div class="menu-body">
-            <router-link to="/study" class="menu-item">
+            <router-link to="/mystudy" class="menu-item">
                 <img src="../../img/life/下载.png" alt="">
                 <p>政治学习</p>
             </router-link>

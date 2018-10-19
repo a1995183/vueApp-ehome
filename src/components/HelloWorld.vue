@@ -6,10 +6,7 @@
     </div>
     <div class="home-swiper">
       <swiper :options="swiperOption">
-        <swiper-slide><img class="swiper-item" :src="dataswiper[0].imgUrl" :value="dataswiper[0].id"  @click="gostudy(2656)"></swiper-slide>
-        <swiper-slide><img class="swiper-item" :src="dataswiper[1].imgUrl" :value="dataswiper[1].id"  @click="gostudy(2681)"></swiper-slide>
-        <swiper-slide><img class="swiper-item" :src="dataswiper[2].imgUrl" :value="dataswiper[2].id"  @click="gostudy(2592)"></swiper-slide>
-        <swiper-slide><img class="swiper-item" :src="dataswiper[3].imgUrl" :value="dataswiper[3].id"  @click="gostudy(2679)"></swiper-slide>
+        <swiper-slide v-for="item in dataswiper" :key="item.newsId"><img width="375px" class="swiper-item"  :src="item.imgUrl" :value="item.url"  @click="gostudy(item.url)"></swiper-slide>
     </swiper>
     <div class="swiper-pagination"></div>
     </div>
@@ -100,10 +97,10 @@ export default {
         }
     },methods:{
       getSwiper(){
-        axios.get('http://211.67.177.56:8080/hhdj/carousel/carouselList.do?type=0').then(
+        this.xhr.get('/carousel/carouselList.do?type=0').then(
           res=>{
-            if(res.data.code==1){
-              this.dataswiper=res.data.rows
+            if(res.code==1){
+              this.dataswiper=res.rows
                     }else{
                     }
           }
@@ -125,6 +122,10 @@ export default {
   visibility:
   hidden;
   height:0
+}
+.swiper-box{
+  width: 375px;
+  height: 100%;
 }
 
 .home-Header{

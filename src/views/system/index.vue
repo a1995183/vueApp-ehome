@@ -9,7 +9,7 @@
 
 <script>
 import headerCom from '@/components/header-Com';
-import newsItem from '@/components/news-Item';
+import newsItem from '@/components/news-item';
 import xhr from '@/utils/index.js';
 export default {
     components:{
@@ -25,8 +25,8 @@ export default {
     methods:{
         getdata(){
          xhr.get('/news/newsList.do?page=1&rows=10&type=4').then(res=>{
-             if(res.data.code==1){
-                 this.data=res.data.rows
+             if(res.code==1){
+                 this.data=res.rows
              }
          })   
         }

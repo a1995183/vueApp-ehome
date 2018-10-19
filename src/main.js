@@ -6,6 +6,7 @@ import router from './router'
 import vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 import xhr from './utils/index'
+import store from './store/index.js'
 Vue.config.productionTip = false
 Vue.use(vant)
 Vue.prototype.xhr=xhr
@@ -13,6 +14,7 @@ Vue.prototype.xhr=xhr
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

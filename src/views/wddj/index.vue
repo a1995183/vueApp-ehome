@@ -5,13 +5,14 @@
         </div>
         <div class="header-img">
             <div class="img">
-                <img src="">
+                <img class="img-header" width="100%" height="100%" :src="userInfo.header">
             </div>
-                <a href=""><p class="plase-login" >你还没有登录，请登录</p></a>
+            <p class="plase-login name-user" v-if="userInfo.username"> {{userInfo.username}}</p>
+                <a v-else href="/login"><p class="plase-login" >你还没有登录，请登录</p></a>
         </div>
         <div class="list">
             <div class="list-item">
-            <a  href=""><img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></a>
+            <router-link :to="userInfo.username?'/user':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></router-link>
             </div>
             <div class="list-item">
             <a  href=""><img src="../../img/wddj/量化积分icon.png"><div class="list-text">个人量化积分</div></a>
@@ -23,10 +24,32 @@
             <a  href=""><img src="../../img/wddj/个人信息.png"><div class="list-text">党费缴纳</div></a>
             </div>
         </div>
+        <div class="clear-login">
+            <van-button v-show="userInfo.username" type="primary" @click="clearLogin">退出登录</van-button>
+        </div>
     </div>
 </template>
 <script>
+import { Button } from 'vant';
+
+import {mapState} from 'vuex';
 export default {
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+        clearLogin(){
+            this.$store.commit('CHANGE_userInfo','')
+        }
+    },
+    created(){
+
+    },
+    computed:{
+        ...mapState(['userInfo'])
+    },
     
 }
 </script>
@@ -52,21 +75,26 @@ export default {
     padding-top:30px;
      background: #c50206;
      .img{
-         width:1.333333rem;
+         width:1.1923rem;
          margin-left: 50%;
          transform: translateX(-50%);
-         height:1.3333333rem;
+         height:1.1923rem;
          border-radius: 50%;
          background:url('../../img/home/bt_bg.png');
+         .img-header{
+             border-radius: 50%;
+         }
      }
      .plase-login{
-         color:#fff;
-         font-size: 12px;
-         width: 120px;
-        margin-left: 50%;
-        transform: translateX(-50%);
+    color:#fff;
+    font-size: 12px;
+    width: 120px;
+    margin-left: 50%;
+    transform: translateX(-50%);
      }
-     
+     .name-user{
+    text-align: center;
+     }
 }
 .list{
     .list-item{
@@ -78,18 +106,33 @@ export default {
         padding:10px;
         box-sizing: border-box;
         img{
-            float: left;
-            width: 32px;
-            height: 32px;
-            margin-right: 14px;
+        float: left;
+        width: 32px;
+        height: 32px;
+        margin-right: 14px;
         }
        .list-text{
-           color:#666;
-           float: left;
-           height: 54px;
-           margin:0;
-           line-height: 34px;
+        color:#666;
+        float: left;
+        height: 54px;
+        margin:0;
+        line-height: 34px;
        }
+    }
+}
+.clear-login{
+    width: 100%;
+    height: 47px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    button{
+        background: #ef473a;
+        width: 100%;
+        height: 100%;
+        /deep/ .van-button__text{
+        font-size: 16px;
+        line-height: 44px;
+        }
     }
 }
 </style>

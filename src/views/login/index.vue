@@ -11,7 +11,7 @@
             </div>
             <div class="login-bottom" >
               <form action="" @submit.prevent>
-                    <input type="text" v-model="formData.username" placeholder="身份证号">
+                    <input type="text" v-model="formData.id_card" placeholder="身份证号">
                     <input type="password" v-model="formData.password" placeholder="密码">
                     <van-button  type="warning" @click="login"> 登录</van-button>
               </form>
@@ -21,21 +21,34 @@
     
     <script>
     import { Button } from 'vant';
-    import xhr from '../../utils/index.js'
+    import { Dialog } from 'vant';
     import axios from 'axios';
         export default {
             data(){
                 return{
                     formData:{
-                        username:'1001',
+                        id_card:'1001',
                         password:'123456'
                     }
                 }
             },methods:{
                 login(){ 
-                    console.log(this.formData)
-                    xhr.post('/user/userLogin.do',{data:this.formData}).then(res=>{
+                    this.xhr.fetch('post','/user/userLogin.do',this.formData).then(res=>{
+                    // axios.post('/api/login',this.formData).then(res=>{
+                        if(res.code==1){
+                             let token = res.token
+                        localStorage.setItem('token',token)
                         console.log(res)
+                            this.$store.commit('CHANGE_userInfo',res.data)
+                            this.$store.commit('CHANGE_token',res.token)
+                            history.go(-1)
+                        }
+                        else{
+                         Dialog.alert({
+                            message: res.msg
+                            }).then(() => {
+                            });
+                        }
                     })
                 }
             }

@@ -33,8 +33,8 @@ import HeaderCom from '@/components/header-Com';
         methods:{
             getData(){
                xhr.get('/news/newsList.do?page=1&rows=10&type=3').then(res=>{
-                 if(res.data.code==1){
-                     this.data=res.data.rows
+                 if(res.code==1){
+                     this.data=res.rows
                  }
                }) 
             },

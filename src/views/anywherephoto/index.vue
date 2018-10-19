@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import headerCom from '@/components/header-com';
+import headerCom from '@/components/header-Com';
 import xhr from '@/utils/index.js';
     export default {
         components:{
@@ -25,9 +25,9 @@ import xhr from '@/utils/index.js';
         },
         methods:{
          getdata(){
-                xhr.get('/news/newsList.do?page=1&rows=10&type=7').then(res=>{
-                    if(res.data.code==1){
-                        this.data=res.data.rows
+                this.xhr.get('/news/newsList.do?page=1&rows=10&type=7').then(res=>{
+                    if(res.code==1){
+                        this.data=res.rows
                     }
                 })
          },

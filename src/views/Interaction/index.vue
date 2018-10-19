@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import headerCom from '@/components/header-Com'
-import xhr from '@/utils/index.js'
+import headerCom from '@/components/header-Com';
+import xhr from '@/utils/index.js';
 export default {
         components:{
             headerCom

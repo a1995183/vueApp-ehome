@@ -10,8 +10,7 @@
  </div>
 </template>
 <script>
-import headerCom from '@/components/header-com';
-import axios from 'axios';
+import headerCom from '@/components/header-Com';
 export default {
 components:{
     headerCom
@@ -26,11 +25,13 @@ methods:{
     getData(){
         console.log(this.$route.params)
         let id=this.$route.params.id
-        axios.get(`http://211.67.177.56:8080/hhdj/news/newsContent.do?newsId=${id}`).then(
+        this.xhr.get(`/news/newsContent.do?newsId=${id}`).then(
             res=>{
-                if(res.data.code==1){
-                    this.data=res.data.data
+                if(res.code==1){
+                    this.data=res.data
                 console.log(this.data)
+                }else{
+                    console.log(res)
                 }
             }
         )

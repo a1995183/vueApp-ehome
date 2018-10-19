@@ -26,8 +26,8 @@ export default {
         getdata(){
             xhr.get('/news/newsList.do?page=1&rows=10&type=5')
             .then(res=>{
-                if(res.data.code==1){
-                this.data=res.data.rows
+                if(res.code==1){
+                this.data=res.rows
                 }
             })
         }
