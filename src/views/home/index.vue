@@ -2,14 +2,6 @@
     <div class="home_body">
            <div class="table">
         <van-tabbar v-model="active">
-    <!-- <van-tabbar-item to="/home">
-        <span>首页</span>
-        <img
-          slot="icon"
-          slot-scope="props"
-          :src="props.active ? icon.active : icon.normal"
-        >
-      </van-tabbar-item> -->
       <van-tabbar-item icon="wap-home" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="chat" to="/notice">通知早知道</van-tabbar-item>
       <van-tabbar-item icon="contact" to="/wddj">我的党建</van-tabbar-item>

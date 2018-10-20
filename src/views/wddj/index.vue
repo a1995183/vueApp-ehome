@@ -7,25 +7,25 @@
             <div class="img">
                 <img class="img-header" width="100%" height="100%" :src="userInfo.header">
             </div>
-            <p class="plase-login name-user" v-if="userInfo.username"> {{userInfo.username}}</p>
+            <p class="plase-login name-user" v-if="userInfo.idCard"> {{userInfo.username}}</p>
                 <a v-else href="/login"><p class="plase-login" >你还没有登录，请登录</p></a>
         </div>
         <div class="list">
             <div class="list-item">
-            <router-link :to="userInfo.username?'/user':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></router-link>
+            <router-link :to="userInfo.idCard?'/user':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></router-link>
             </div>
             <div class="list-item">
-            <a  href=""><img src="../../img/wddj/量化积分icon.png"><div class="list-text">个人量化积分</div></a>
+            <router-link :to="userInfo.idCard?'/score':'/login'"><img src="../../img/wddj/量化积分icon.png"><div class="list-text">个人量化积分</div></router-link>
             </div>
             <div class="list-item">
-            <a  href=""><img src="../../img/wddj/修改密码icon.png"><div class="list-text">修改密码</div></a>
+            <router-link :to="userInfo.idCard?'/upPsw':'/login'"><img src="../../img/wddj/修改密码icon.png"><div class="list-text">修改密码</div></router-link>
             </div>
             <div class="list-item">
-            <a  href=""><img src="../../img/wddj/个人信息.png"><div class="list-text">党费缴纳</div></a>
+            <router-link :to="userInfo.idCard?'/pay':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">党费缴纳</div></router-link>
             </div>
         </div>
         <div class="clear-login">
-            <van-button v-show="userInfo.username" type="primary" @click="clearLogin">退出登录</van-button>
+            <van-button v-show="userInfo.idCard" type="primary" @click="clearLogin">退出登录</van-button>
         </div>
     </div>
 </template>

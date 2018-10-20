@@ -9,6 +9,7 @@ const qs = require('querystring')
 instance.interceptors.request.use(function (config) {
     if (config.method == 'post') {
         config.data = qs.stringify(config.data)
+        //stringify这个方法是将一个对象序列化成一个字符串，与querystring.parse相对。
         config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     }
     return config
@@ -60,7 +61,7 @@ const xhr = {
                 }
             }
         }
-        console.log(computedConfig)
+        // console.log(computedConfig)
         instance.get(url,{params:data,...computedConfig}).then(res=>{
             resolve(res.data)
         }).catch(err=>{

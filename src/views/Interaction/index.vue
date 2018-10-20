@@ -46,8 +46,8 @@ export default {
             getdata(){
                 xhr.get('/forum/forumList.do?page=1&rows=10&type=0&cates=0').then(
                     res=>{
-                       if(res.data.code==1){
-                           this.data=res.data.rows
+                       if(res.code==1){
+                           this.data=res.rows
                            console.log(this.data)
                        }
                     }
@@ -82,41 +82,41 @@ export default {
     width: 178px;
     height: 43px;
     float: left;
-        .username{
-        font-size: 16px;
-        color:#333;
-        float: left;
-        width: 2.2654rem;
-        height: 41px;
-        }
-        p{
-        float: left;
-        font-size: 12px;
-        margin:-13px 0;
-        color:#333;
-        .dy-btn{
-            width: 12px;
-            height: 14px;
-            display: inline-block;
-        }
-        }
-        .type{
-            font-size: 12px;
-            color:#666;
-        }
-}
-    .user-hd{
-    float: right;
-    font-size: 12px;
-    margin-top: 10px;
-    width: 66px;
-    height: 26px;
+    .username{
+    font-size: 16px;
     color:#333;
-    text-align: center;
-    line-height: 26px;
-    border:1px solid red;
-    border-radius: 15%/50%;
+    float: left;
+    width: 2.2654rem;
+    height: 41px;
     }
+    p{
+    float: left;
+    font-size: 12px;
+    margin:-13px 0;
+    color:#333;
+    .dy-btn{
+        width: 12px;
+        height: 14px;
+        display: inline-block;
+    }
+    }
+    .type{
+        font-size: 12px;
+        color:#666;
+    }
+}
+.user-hd{
+float: right;
+font-size: 12px;
+margin-top: 10px;
+width: 66px;
+height: 26px;
+color:#333;
+text-align: center;
+line-height: 26px;
+border:1px solid red;
+border-radius: 15%/50%;
+}
 }
 .content-ly{
     width: 100%;
@@ -126,17 +126,17 @@ export default {
     color:#333;
 }
 .hf-buttom{
-    float: right;
-    font-size: 15px;
-    color:#666;
-    width:54px;
-    height: 20px;
-    margin-right: 15px;
- .dy-btn{
-            width: 18px;
-            height: 16px;
-            display: inline-block;
-        }
+float: right;
+font-size: 15px;
+color:#666;
+width:54px;
+height: 20px;
+margin-right: 15px;
+.dy-btn{
+        width: 18px;
+        height: 16px;
+        display: inline-block;
+    }
 }
 .btn-addtock{
     width: 50px;
@@ -145,7 +145,6 @@ export default {
     background: red;
     position: fixed;
     bottom:80px;
-    right:20px;
 }
   
 

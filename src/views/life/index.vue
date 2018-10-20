@@ -4,14 +4,14 @@
             <router-link class="link" to="/home"><img src="../../img/gostudy/返回 (1).svg" alt=""></router-link>
             <p>掌上组织生活</p>
         </div>
-        <div class="life-swiper"> 
+        <div class="life-swiper" > 
             <img src="../../img/life/timg.jpg" alt="">
         </div>
         <div class="menu-body">
-            <router-link to="/mystudy" class="menu-item">
+            <div @click="newsList('8','政治学习')" class="menu-item">
                 <img src="../../img/life/下载.png" alt="">
                 <p>政治学习</p>
-            </router-link>
+            </div>
             <router-link to="/study" class="menu-item">
                 <img src="../../img/life/下载 (1).png" alt="">
                 <p>思想汇报</p>
@@ -24,7 +24,7 @@
                 <img src="../../img/life/下载 (3).png" alt="">
                 <p>民主评议</p>
             </router-link>
-            <router-link to="/study" class="menu-item">
+            <router-link to="/map" class="menu-item">
                 <img src="../../img/life/下载 (4).png" alt="">
                 <p>流动党员找组织</p>
             </router-link>
@@ -34,7 +34,14 @@
 
 <script>
     export default {
-        
+        methods:{
+            newsList(url,name){
+                this.$router.push(`/newsList/${url}/${name}`)
+                
+            }
+        },
+        created(){
+        }
     }
 </script>
 

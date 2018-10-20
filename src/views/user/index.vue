@@ -5,7 +5,10 @@
     <div class="table-userinfo">
         <div class="item-userinfo">
             <div class="item-right xdbj">
-                <input class="file" type="file">
+                <!-- <input class="file" @change="uploadImg(file)" value="file" type="file"> -->
+                <van-uploader class="file" :after-read="onRead">
+                <van-icon name="photograph" />
+                </van-uploader>
                 <img width="40"  height="100%" class="flr item-header-img"  :src="userInfo.header" alt="">
             </div>
             <div class="item-left">头像</div>
@@ -61,8 +64,8 @@
         <div class="item-userinfo">
             <div class="item-right ">
                 <div class="sex-item" >
-                     <input type="radio" class="radio" name="sex"  value="1">男
-                     <input type="radio" class="radio" name="sex" value="0">女
+                     <input type="radio" class="radio" name="sex" v-model="userInfo.sex"  value="1">男
+                     <input type="radio" class="radio" name="sex" v-model="userInfo.sex" value="0">女
                 </div>
                
             </div>
@@ -140,6 +143,7 @@
 <script>
 import { Popup } from 'vant';
 import headerCom from '@/components/header-Com';
+import { Uploader } from 'vant';
 import {mapState} from 'vuex';
     export default {
         components:{
@@ -185,7 +189,6 @@ import {mapState} from 'vuex';
         methods:{
             getdata(){
                 this.xhr.get('user/userInfo.do','',{headers:{token:this.token}}).then(res=>{
-                    // console.log(this.token)
                     if(res.code==1){
                         this.userInfo={...res.data}
                         console.log(this.userInfo)
@@ -202,11 +205,28 @@ import {mapState} from 'vuex';
                   this.partyid=!this.partyid
             },
             updataUserInfo(){
-                this.xhr.fetch('post','/user/modifyInfo.do',this.userInfo).then(
+            //    let data= delete this.userInfo['idCard']; 
+            let data={
+                username:this.userInfo.username,
+                address:this.userInfo.header,
+                hometown:this.userInfo.hometown,
+                nation:this.userInfo.nation,
+                wxNum:this.userInfo.wxNum,
+                qqNum:this.userInfo.qqNum,
+                sex:this.userInfo.sex,
+                education:this.userInfo.education,
+                jobRank:this.userInfo.jobRank,
+                salary:this.userInfo.salary,
+                joinPartyTime:this.userInfo.joinPartyTime,
+                lastPayTime:this.userInfo.lastPayTime,
+                partyStatus:this.userInfo.partyStatus
+            }
+                 console.log(data)
+                this.xhr.fetch('post','/user/modifyInfo.do',data).then(
                     res=>{
                         console.log(res)
                     }
-                )
+                ).catch(err=>console.log(err))
             },
             changeParty(value){
                   this.partyid=!this.partyid
@@ -225,6 +245,12 @@ import {mapState} from 'vuex';
                  let date_value=date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
                  this.userInfo.joinPartyTime=date_value
                 this.showFirst=!this.showFirst
+            },
+            onRead(myFile){
+                
+                this.xhr.fetch('post',`/image/uploadBase64.do`,myFile).then(res=>{
+                    console.log(res)
+                })
             }
         },
         created(){

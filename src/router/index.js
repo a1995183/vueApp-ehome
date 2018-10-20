@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import home from '../views/home'
 Vue.use(Router)
 
@@ -9,14 +8,14 @@ export default new Router({
     {
       path: '/',
   component:home,
-  redirect:'/login',
+  redirect:'/home',
   children:[
         {
           path:'home',
           meta:{
             title:'首页'
           },
-        component:HelloWorld
+        component:()=>import('@/views/home/home.vue')
         },
         {
           path:'notice',
@@ -42,13 +41,6 @@ export default new Router({
       component:()=>import('@/views/gostudy')
     },
     {
-      path:'/newseye',
-      meta:{
-        title:'信工新闻眼',
-      },
-      component:()=>import('@/views/newseye')
-    },
-    {
       path:'/login',
       meta:{
         title:'登录页'
@@ -70,25 +62,11 @@ export default new Router({
       component:()=>import('@/views/choice')
     },
     {
-      path:'/parthbuild',
-      meta:{
-        title:'党建一点通',
-      },
-      component:()=>import('@/views/partybuild')
-    },
-    {
-      path:'/showidentify',
-      meta:{
-        title:'党员亮身份'
-      },
-      component:()=>import('@/views/showidentify')
-    },
-    {
       path:'/today',
       meta:{
         title:'党史上的今天'
       },
-      component:()=>import('@/views/today')
+      component:()=>import('@/views/today/index.vue')
     },
     {
       path:'/anywhere',
@@ -131,6 +109,41 @@ export default new Router({
         title:'修改个人信息'
       },
       component:()=>import('@/views/user')
+    },
+    {
+      path:'/score',
+      meta:{
+        title:'个人量化积分'
+      },
+      component:()=>import('@/views/score')
+    },
+    {
+      path:'/upPsw',
+      meta:{
+        title:'修改密码'
+      },
+      component:()=>import('@/views/upPsw')
+    },
+    {
+      path:'/pay',
+      meta:{
+        title:'缴费党费'
+      },
+      component:()=>import('@/views/pay')
+    },
+    {
+      path:'/newsList/:url/:name',
+      meta:{
+        title:'缴费党费'
+      },
+      component:()=>import('@/components/newsList')
+    },
+    {
+      path:'/map',
+      meta:{
+        title:'流动党员找组织'
+      },
+      component:()=>import('@/views/map')
     },
     
    
