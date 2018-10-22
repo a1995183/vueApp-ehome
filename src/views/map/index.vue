@@ -38,17 +38,14 @@ export default {
             var marker = new BMap.Marker(point);        // 创建标注    
             var marker1 = new BMap.Marker(point1);        // 创建标注    
            var label = new BMap.Label("信息工程学院学生党支部 总支书记：杨鑫 电话：0396-2853187", {
-            offset: new BMap.Size(15, -25)
+            offset: new BMap.Size(15, -5)
             });
               var label1 = new BMap.Label("信息工程学院学生党支部 总支书记：杨晓阳 电话：0396-23432452", {
             offset: new BMap.Size(15, -25)
             });
               var label2 = new BMap.Label("信息工程学院流动党支部 支部书记：高阳 电话：13634343333", {
             offset: new BMap.Size(15, -25)
-            });
-            label2.setStyle({
-                top:'-5px'
-            })
+            });           
             marker.setLabel(label); 
             marker1.setLabel(label1); 
             marker2.setLabel(label2); 

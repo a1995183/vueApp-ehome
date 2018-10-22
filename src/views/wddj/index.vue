@@ -12,16 +12,32 @@
         </div>
         <div class="list">
             <div class="list-item">
-            <router-link :to="userInfo.idCard?'/user':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></router-link>
+            <router-link :to="userInfo.idCard?'/user':'/login'">
+            <div  class="item-xy">
+                <img class="item-xy-img" src="../../img/wddj/xiangyou.svg" width="20" height="23">
+            </div>
+            <img src="../../img/wddj/个人信息.png"><div class="list-text">个人信息</div></router-link>
             </div>
             <div class="list-item">
-            <router-link :to="userInfo.idCard?'/score':'/login'"><img src="../../img/wddj/量化积分icon.png"><div class="list-text">个人量化积分</div></router-link>
+            <router-link :to="userInfo.idCard?'/score':'/login'">
+            <div  class="item-xy">
+                <img class="item-xy-img" src="../../img/wddj/xiangyou.svg" width="20" height="23">
+            </div>
+            <img src="../../img/wddj/量化积分icon.png"><div class="list-text">个人量化积分</div></router-link>
             </div>
             <div class="list-item">
-            <router-link :to="userInfo.idCard?'/upPsw':'/login'"><img src="../../img/wddj/修改密码icon.png"><div class="list-text">修改密码</div></router-link>
+            <router-link :to="userInfo.idCard?'/upPsw':'/login'">
+            <div  class="item-xy">
+                <img class="item-xy-img" src="../../img/wddj/xiangyou.svg" width="20" height="23">
+            </div>
+            <img src="../../img/wddj/修改密码icon.png"><div class="list-text">修改密码</div></router-link>
             </div>
             <div class="list-item">
-            <router-link :to="userInfo.idCard?'/pay':'/login'"><img src="../../img/wddj/个人信息.png"><div class="list-text">党费缴纳</div></router-link>
+            <router-link :to="userInfo.idCard?'/pay':'/login'">
+            <div  class="item-xy">
+                <img class="item-xy-img" src="../../img/wddj/xiangyou.svg" width="20" height="23">
+            </div>
+            <img src="../../img/wddj/个人信息.png"><div class="list-text">党费缴纳</div></router-link>
             </div>
         </div>
         <div class="clear-login">
@@ -105,6 +121,20 @@ export default {
         line-height: 54px;
         padding:10px;
         box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+        .item-xy{
+        text-align: center;
+        margin-top: 4px;
+        float: right;
+        width: 23px;
+        line-height: 20px;
+        .item-xy-img{
+            width: 18px;
+            height:18px;
+            float: right;
+            margin-right: 0;
+        }
+        }
         img{
         float: left;
         width: 32px;

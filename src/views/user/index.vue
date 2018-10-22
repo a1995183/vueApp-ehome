@@ -5,8 +5,8 @@
     <div class="table-userinfo">
         <div class="item-userinfo">
             <div class="item-right xdbj">
-                <!-- <input class="file" @change="uploadImg(file)" value="file" type="file"> -->
-                <van-uploader class="file" :after-read="onRead">
+                <!-- <input class="file" style="" @change="changeImage" value="file" type="file"> -->
+                <van-uploader class="file"  :after-read="onRead">
                 <van-icon name="photograph" />
                 </van-uploader>
                 <img width="40"  height="100%" class="flr item-header-img"  :src="userInfo.header" alt="">
@@ -219,7 +219,8 @@ import {mapState} from 'vuex';
                 salary:this.userInfo.salary,
                 joinPartyTime:this.userInfo.joinPartyTime,
                 lastPayTime:this.userInfo.lastPayTime,
-                partyStatus:this.userInfo.partyStatus
+                partyStatus:this.userInfo.partyStatus,
+                header:this.header
             }
                  console.log(data)
                 this.xhr.fetch('post','/user/modifyInfo.do',data).then(
@@ -246,12 +247,32 @@ import {mapState} from 'vuex';
                  this.userInfo.joinPartyTime=date_value
                 this.showFirst=!this.showFirst
             },
-            onRead(myFile){
-                
-                this.xhr.fetch('post',`/image/uploadBase64.do`,myFile).then(res=>{
-                    console.log(res)
-                })
-            }
+            onRead(file){
+                let Myfile=file.content.split(',')[1]
+                this.xhr.fetch('post',`/image/uploadBase64.do`,{myFile:Myfile}).then(res=>{
+               this.header=res.url
+               })
+            },
+            // changeImage(e){
+            //     let _this=this
+            //     var file = e.target.files[0]//获取file文件
+            //     this.file=file
+            //     let render=new FileReader()
+            //FileReader作为文件API的重要成员用于读取文件
+            //readAsDataURL：这是例子程序中用到的方法，该方法将文件读取为一段以 data: 开头的字符串，
+            //     render.readAsDataURL(file)
+            //onloadend	读取完成时触发，无论读取成功或失败
+            //     render.onloadend=function(){
+            //         _this.header=this.result.split(',')[1]
+            //         _this.xhr.fetch('post','/image/uploadBase64.do',{myFile:_this.header}).then(
+            //             res=>{
+            //                 console.log(res)
+            //                 _this.header=res.url
+            //             }
+            //         )
+            //     // console.log(this.result)
+            //     }
+            // }
         },
         created(){
             this.getdata()
